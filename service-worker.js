@@ -1,4 +1,4 @@
-const CACHE = 'papertrail-shell-v3';
+const CACHE = 'papertrail-shell-v4';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)));
