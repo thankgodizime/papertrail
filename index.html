@@ -23,8 +23,8 @@
       <a class="brand" href="#" aria-label="Papertrail home"><span class="brand-mark">p</span><span>papertrail</span></a>
       <div class="workspace-label">YOUR SPACE</div>
       <nav class="main-nav" aria-label="Main navigation">
-        <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span>Overview</button>
-        <button class="nav-item" data-view="inbox"><span class="nav-icon">▤</span>My documents <span class="nav-count" id="doc-count">6</span></button>
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span>Home</button>
+        <button class="nav-item" data-view="inbox"><span class="nav-icon">▤</span>Documents <span class="nav-count" id="doc-count">6</span></button>
         <button class="nav-item" data-view="actions"><span class="nav-icon">✓</span>To-dos <span class="nav-count warm" id="todo-count">3</span></button>
       </nav>
       <div class="sidebar-divider"></div>
@@ -37,7 +37,7 @@
       </div>
       <div class="sidebar-bottom">
         <div class="upgrade-card"><div class="upgrade-spark">✳</div><strong>A little more peace of mind</strong><p>Let Papertrail keep watch over every deadline.</p><button id="upgrade-btn">Explore Papertrail Plus <span>↗</span></button></div>
-        <button class="profile"><span class="avatar">ND</span><span class="profile-copy"><b>Naomi Davis</b><small>Personal space</small></span><span class="more">···</span></button>
+        <button class="profile" data-view="profile" aria-label="Open your profile"><span class="avatar profile-avatar">ND</span><span class="profile-copy"><b class="profile-name">Naomi Davis</b><small>My profile</small></span><span class="more">›</span></button>
       </div>
     </aside>
 
@@ -46,12 +46,12 @@
       <section class="page" id="overview-page">
         <div class="welcome-row"><div><div class="eyebrow"><span class="sun-icon">☀</span> THURSDAY, OCTOBER 2</div><h1>Good morning, Naomi<span class="wave">✳</span></h1><p class="lede">Here’s what needs your attention. We’ve got the paperwork part.</p></div><button class="primary-button" id="upload-btn"><span>＋</span> Add a document</button><input id="file-input" type="file" multiple hidden accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /></div>
         <div class="summary-grid">
-          <article class="summary-card deadline-card"><div class="summary-top"><span>UP NEXT</span><span class="tiny-icon coral">◷</span></div><div class="summary-main"><div><strong id="deadline-title">Renters insurance renewal</strong><p id="deadline-sub">Due in 2 days · Home</p></div><span class="date-pill">OCT <b>04</b></span></div><button class="text-link" data-open="insurance">See what to do <span>→</span></button></article>
-          <article class="summary-card todo-card"><div class="summary-top"><span>ON YOUR PLATE</span><span class="tiny-icon green">✓</span></div><div class="summary-number"><strong id="todo-total">3</strong><span>things to take care of</span></div><div class="progress-track"><i></i></div><div class="summary-foot"><span>1 of 4 done this week</span><button class="text-link" data-view-link="actions">View to-dos →</button></div></article>
-          <article class="summary-card saved-card"><div class="summary-top"><span>LOOKING GOOD</span><span class="tiny-icon lilac-text">✧</span></div><div class="saved-copy"><strong>You're all caught up<br/>on the important stuff.</strong><p>We'll let you know if that changes.</p></div><div class="saved-illustration"><span class="paper paper-back"></span><span class="paper paper-front"><i></i><i></i><i></i></span><span class="check-bubble">✓</span></div></article>
+          <article class="summary-card deadline-card"><div class="summary-top"><span>COMING UP</span><span class="tiny-icon coral">◷</span></div><div class="summary-main"><div><strong id="deadline-title">Renters insurance renewal</strong><p id="deadline-sub">Due in 2 days · Home</p></div><span class="date-pill">OCT <b>04</b></span></div><button class="text-link" data-open="insurance">What should I do? <span>→</span></button></article>
+          <article class="summary-card todo-card"><div class="summary-top"><span>TO-DOS</span><span class="tiny-icon green">✓</span></div><div class="summary-number"><strong id="todo-total">3</strong><span>things to take care of</span></div><div class="progress-track"><i></i></div><div class="summary-foot"><span>1 of 4 done this week</span><button class="text-link" data-view-link="actions">See my to-dos →</button></div></article>
+          <article class="summary-card saved-card"><div class="summary-top"><span>ALL CAUGHT UP</span><span class="tiny-icon lilac-text">✧</span></div><div class="saved-copy"><strong>You're all caught up<br/>on the important stuff.</strong><p>We'll let you know if that changes.</p></div><div class="saved-illustration"><span class="paper paper-back"></span><span class="paper paper-front"><i></i><i></i><i></i></span><span class="check-bubble">✓</span></div></article>
         </div>
 
-        <div class="section-heading"><div><h2>Worth a look</h2><p>A couple of things we found in your documents.</p></div><button class="subtle-button" data-view-link="inbox">See all documents <span>→</span></button></div>
+        <div class="section-heading"><div><h2>We found these details</h2><p>Useful dates and changes from your documents.</p></div><button class="subtle-button" data-view-link="inbox">See all documents <span>→</span></button></div>
         <div class="insights-grid" id="insights-grid">
           <article class="insight-card featured" data-open="insurance"><div class="insight-meta"><span class="doc-type home-type">HOME</span><span class="insight-time">2 days left</span></div><h3>Your insurance is up for renewal</h3><p>We found your policy end date. A quick comparison could save you money before it renews.</p><button class="insight-action">Review renewal <span>→</span></button><div class="insight-art art-shield"><span>⌂</span><i>✓</i></div></article>
           <article class="insight-card"><div class="insight-meta"><span class="doc-type money-type">MONEY</span><span class="insight-time">Just spotted</span></div><h3>A subscription price changed</h3><p>Your Streamly plan is going up by £2/month from next billing cycle.</p><button class="insight-action" data-open="streamly">See the details <span>→</span></button><div class="insight-art art-coins"><span>£</span></div></article>
@@ -61,7 +61,14 @@
         <div class="document-list" id="document-list"></div>
         <div class="bottom-note"><span>✳</span> Papertrail reads the fine print, so you don't have to.</div>
       </section>
-      <section class="page alternate-page hidden" id="alternate-page"><div class="welcome-row"><div><div class="eyebrow">YOUR SPACE</div><h1 id="alternate-title">My documents</h1><p class="lede" id="alternate-lede">Everything you’ve shared with Papertrail, neatly in one place.</p></div><button class="primary-button" id="upload-btn-alt"><span>＋</span> Add a document</button></div><div class="alt-filters"><button class="filter-chip selected" data-filter="All">All</button><button class="filter-chip" data-filter="Home">Home</button><button class="filter-chip" data-filter="Money">Money</button><button class="filter-chip" data-filter="Health">Health</button><button class="filter-chip" data-filter="Work">Work</button></div><div class="document-list alt-list" id="alternate-list"></div></section>
+      <section class="page alternate-page hidden" id="alternate-page"><div class="welcome-row"><div><div class="eyebrow">YOUR SPACE</div><h1 id="alternate-title">Documents</h1><p class="lede" id="alternate-lede">All your important files, together in one place.</p></div><button class="primary-button" id="upload-btn-alt"><span>＋</span> Add a document</button></div><div class="alt-filters"><button class="filter-chip selected" data-filter="All">All</button><button class="filter-chip" data-filter="Home">Home</button><button class="filter-chip" data-filter="Money">Money</button><button class="filter-chip" data-filter="Health">Health</button><button class="filter-chip" data-filter="Work">Work</button></div><div class="document-list alt-list" id="alternate-list"></div></section>
+      <section class="page profile-page hidden" id="profile-page">
+        <div class="profile-heading"><div class="eyebrow">YOUR ACCOUNT</div><h1>Your profile</h1><p class="lede">Update your details and choose which reminders you get.</p></div>
+        <div class="profile-hero"><span class="profile-avatar-large">ND</span><div><h2 class="profile-name">Naomi Davis</h2><p>Your personal Papertrail space</p></div></div>
+        <form class="settings-card" id="profile-form"><div class="settings-title"><h2>Your details</h2><p>Change the name and email linked to your profile.</p></div><label class="field-label" for="profile-name-input">Your name</label><input class="profile-input" id="profile-name-input" name="name" autocomplete="name" value="Naomi Davis" required><label class="field-label" for="profile-email-input">Email address</label><input class="profile-input" id="profile-email-input" name="email" type="email" autocomplete="email" value="naomi@example.com" required><div class="form-actions"><span class="form-hint">Your changes are saved on this device.</span><button class="primary-button" type="submit">Save changes</button></div></form>
+        <section class="settings-card"><div class="settings-title"><h2>Reminders</h2><p>Pick the updates that would be helpful.</p></div><label class="setting-row"><span><b>Important dates</b><small>Remind me before a bill or document is due.</small></span><input type="checkbox" id="date-reminders" checked><i class="toggle"></i></label><label class="setting-row"><span><b>Document updates</b><small>Let me know when Papertrail finds something new.</small></span><input type="checkbox" id="document-updates" checked><i class="toggle"></i></label></section>
+        <section class="privacy-card"><span class="privacy-mark">⌑</span><div><h2>Your documents stay yours</h2><p>Your files are kept in this browser in this demo. You can remove them by clearing this browser’s saved site data.</p></div></section>
+      </section>
       <footer class="footer"><span>Private by nature. Helpful by design.</span><span>Made for the things that make life, life.</span></footer>
     </main>
   </div>
@@ -71,7 +78,7 @@
     <button class="mobile-nav-item" data-view="inbox"><span>▤</span>Documents</button>
     <button class="mobile-add" id="mobile-add" aria-label="Add a document">＋</button>
     <button class="mobile-nav-item" data-view="actions"><span>✓</span>To-dos<i class="mobile-todo-dot"></i></button>
-    <button class="mobile-nav-item" id="mobile-profile"><span>◉</span>You</button>
+    <button class="mobile-nav-item" id="mobile-profile" data-view="profile"><span>◉</span>You</button>
   </nav>
 
   <div class="modal-backdrop hidden" id="modal-backdrop"><section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div class="modal-label"><span class="modal-spark">✳</span><span id="modal-category">PAPERTRAIL FOUND THIS</span></div><h2 id="modal-title">Your insurance is up for renewal</h2><p class="modal-intro" id="modal-intro"></p><div class="source-box"><div class="source-head"><span class="source-icon">▤</span><div><b>Source document</b><small id="source-name">Renters Insurance Policy.pdf</small></div><span class="verified">✓ Verified</span></div><div class="source-quote" id="source-quote"></div></div><div class="modal-next"><b>Your next step</b><p id="modal-next-text"></p></div><div class="modal-actions"><button class="primary-button" id="mark-done">Mark as handled <span>✓</span></button><button class="subtle-button" id="ask-question">Ask Papertrail <span>↗</span></button></div><div class="modal-privacy">Your documents stay private and are only used to help you.</div></section></div>
