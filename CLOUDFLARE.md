@@ -1,22 +1,17 @@
-# Host Papertrail on Cloudflare for free
+# Papertrail's free AI server
 
-This project is configured as one Cloudflare Worker with static app files and a private server-side AI route. It uses Cloudflare Workers AI, so there is no OpenAI key to put in the app or repository.
+Papertrail's AI endpoint is hosted as a Cloudflare Worker:
 
-## Create the host
+- App: <https://thankgodizime.github.io/papertrail/>
+- AI endpoint: <https://papertrail-ai.mrtiago807.workers.dev/api/chat>
+- Worker source: `worker/index.js`
 
-1. Sign in or create a free Cloudflare account at <https://dash.cloudflare.com/>.
-2. Open **Workers & Pages** and choose **Create application**.
-3. Choose **Import an existing Git repository** and connect GitHub.
-4. Select `thankgodizime/papertrail`. Keep the project root as `/`.
-5. Deploy using the repository's `wrangler.jsonc` configuration. If prompted for a build command, use `npx wrangler deploy`.
-6. Cloudflare will give the app a URL ending in `.workers.dev`. Open that URL on your phone and add it to the home screen.
+The Worker is connected to Cloudflare Workers AI using the `AI` binding and the `@cf/meta/llama-3.2-3b-instruct` model. No OpenAI key or other model secret is stored in the public app or repository. The app sends the user's question and up to 14,000 characters of extracted document text to Cloudflare for an answer. The original uploaded file remains in browser storage on the user's device.
 
-The worker exposes `/api/chat` on the same HTTPS host as the app. It uses the `@cf/meta/llama-3.2-3b-instruct` model and sends only the question and readable document text needed to answer it. Original uploaded files remain in the browser's IndexedDB.
+## Updating the server
+
+The server currently uses Cloudflare's dashboard code editor. After changing `worker/index.js`, open the `papertrail-ai` Worker in Cloudflare, choose **Edit code**, paste the updated source, and choose **Deploy**. To deploy from a local checkout instead, use the included `wrangler.jsonc` after signing Wrangler in to the same Cloudflare account.
 
 ## Free usage
 
-Cloudflare's current Free plan includes up to 100,000 Worker requests per day. Workers AI includes 10,000 Neurons per day at no charge; when that daily AI allocation runs out, Papertrail reports that AI is temporarily unavailable until it resets. Cloudflare may change these limits, so check its pricing pages before a public launch.
-
-## Keep GitHub Pages available
-
-The existing GitHub Pages site remains as a static fallback. Its chat continues to use local text matching. The live AI endpoint is enabled when Papertrail is served from its Cloudflare HTTPS host.
+Cloudflare's current Free plan includes up to 100,000 Worker requests per day. Workers AI includes 10,000 Neurons per day at no charge. When the free daily AI allocation runs out, Papertrail reports that AI is temporarily unavailable until it resets. Cloudflare may change these limits; check its [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) and [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/) before a public launch.
