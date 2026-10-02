@@ -19,10 +19,13 @@ function json(data, status, origin) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname !== "/api/chat") return env.ASSETS.fetch(request);
+    if (url.pathname === "/" && request.method === "GET") {
+      return new Response("Papertrail AI server is ready.", { headers: { "content-type": "text/plain; charset=utf-8" } });
+    }
+    if (url.pathname !== "/api/chat") return new Response("Not found", { status: 404 });
 
     const origin = request.headers.get("Origin") || "";
-    const allowedOrigins = new Set([url.origin, "https://thankgodizime.github.io"]);
+    const allowedOrigins = new Set(["https://thankgodizime.github.io"]);
     if (!allowedOrigins.has(origin)) return new Response("Origin not allowed", { status: 403 });
 
     if (request.method === "OPTIONS") {
