@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "Papertrail — Paperwork, handled.",
+  "short_name": "Papertrail",
+  "description": "A calmer place for paperwork, deadlines, and next steps.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f8f5",
+  "theme_color": "#f7f8f5",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f8f5" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Papertrail" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <title>Papertrail — Paperwork, handled.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Papertrail home"><span class="brand-mark">p</span><span>papertrail</span></a>
+      <div class="workspace-label">YOUR SPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-item" data-view="inbox"><span class="nav-icon">▤</span>My documents <span class="nav-count" id="doc-count">6</span></button>
+        <button class="nav-item" data-view="actions"><span class="nav-icon">✓</span>To-dos <span class="nav-count warm" id="todo-count">3</span></button>
+      </nav>
+      <div class="sidebar-divider"></div>
+      <div class="workspace-label">YOUR LIFE</div>
+      <div class="category-list">
+        <button class="category-item" data-category="Home"><i class="cat-dot mint"></i>Home</button>
+        <button class="category-item" data-category="Money"><i class="cat-dot lilac"></i>Money</button>
+        <button class="category-item" data-category="Health"><i class="cat-dot peach"></i>Health</button>
+        <button class="category-item" data-category="Work"><i class="cat-dot blue"></i>Work</button>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="upgrade-card"><div class="upgrade-spark">✳</div><strong>A little more peace of mind</strong><p>Let Papertrail keep watch over every deadline.</p><button id="upgrade-btn">Explore Papertrail Plus <span>↗</span></button></div>
+        <button class="profile"><span class="avatar">JD</span><span class="profile-copy"><b>Jordan Davis</b><small>Personal space</small></span><span class="more">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="breadcrumbs">Your space <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><button class="icon-button" title="Notifications" aria-label="Notifications">♧<i class="notification-dot"></i></button><button class="help-button" id="help-btn">Need a hand?</button></div></header>
+      <section class="page" id="overview-page">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="sun-icon">☀</span> THURSDAY, OCTOBER 2</div><h1>Good morning, Jordan<span class="wave">✳</span></h1><p class="lede">Here’s what needs your attention. We’ve got the paperwork part.</p></div><button class="primary-button" id="upload-btn"><span>＋</span> Add a document</button><input id="file-input" type="file" multiple hidden accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt" /></div>
+        <div class="summary-grid">
+          <article class="summary-card deadline-card"><div class="summary-top"><span>UP NEXT</span><span class="tiny-icon coral">◷</span></div><div class="summary-main"><div><strong id="deadline-title">Renters insurance renewal</strong><p id="deadline-sub">Due in 2 days · Home</p></div><span class="date-pill">OCT <b>04</b></span></div><button class="text-link" data-open="insurance">See what to do <span>→</span></button></article>
+          <article class="summary-card todo-card"><div class="summary-top"><span>ON YOUR PLATE</span><span class="tiny-icon green">✓</span></div><div class="summary-number"><strong id="todo-total">3</strong><span>things to take care of</span></div><div class="progress-track"><i></i></div><div class="summary-foot"><span>1 of 4 done this week</span><button class="text-link" data-view-link="actions">View to-dos →</button></div></article>
+          <article class="summary-card saved-card"><div class="summary-top"><span>LOOKING GOOD</span><span class="tiny-icon lilac-text">✧</span></div><div class="saved-copy"><strong>You're all caught up<br/>on the important stuff.</strong><p>We'll let you know if that changes.</p></div><div class="saved-illustration"><span class="paper paper-back"></span><span class="paper paper-front"><i></i><i></i><i></i></span><span class="check-bubble">✓</span></div></article>
+        </div>
+
+        <div class="section-heading"><div><h2>Worth a look</h2><p>A couple of things we found in your documents.</p></div><button class="subtle-button" data-view-link="inbox">See all documents <span>→</span></button></div>
+        <div class="insights-grid" id="insights-grid">
+          <article class="insight-card featured" data-open="insurance"><div class="insight-meta"><span class="doc-type home-type">HOME</span><span class="insight-time">2 days left</span></div><h3>Your insurance is up for renewal</h3><p>We found your policy end date. A quick comparison could save you money before it renews.</p><button class="insight-action">Review renewal <span>→</span></button><div class="insight-art art-shield"><span>⌂</span><i>✓</i></div></article>
+          <article class="insight-card"><div class="insight-meta"><span class="doc-type money-type">MONEY</span><span class="insight-time">Just spotted</span></div><h3>A subscription price changed</h3><p>Your Streamly plan is going up by £2/month from next billing cycle.</p><button class="insight-action" data-open="streamly">See the details <span>→</span></button><div class="insight-art art-coins"><span>£</span></div></article>
+          <article class="insight-card"><div class="insight-meta"><span class="doc-type health-type">HEALTH</span><span class="insight-time">For your records</span></div><h3>Your appointment summary</h3><p>We pulled out the follow-up notes from your recent appointment.</p><button class="insight-action" data-open="appointment">Read summary <span>→</span></button><div class="insight-art art-health"><span>✚</span></div></article>
+        </div>
+        <div class="section-heading recent-heading"><div><h2>Recently added</h2><p>Your paperwork, all in one place.</p></div><div class="list-tools"><button class="filter-button" id="filter-button">All documents <span>⌄</span></button><button class="search-button" id="search-open" aria-label="Search">⌕</button></div></div>
+        <div class="document-list" id="document-list"></div>
+        <div class="bottom-note"><span>✳</span> Papertrail reads the fine print, so you don't have to.</div>
+      </section>
+      <section class="page alternate-page hidden" id="alternate-page"><div class="welcome-row"><div><div class="eyebrow">YOUR SPACE</div><h1 id="alternate-title">My documents</h1><p class="lede" id="alternate-lede">Everything you’ve shared with Papertrail, neatly in one place.</p></div><button class="primary-button" id="upload-btn-alt"><span>＋</span> Add a document</button></div><div class="alt-filters"><button class="filter-chip selected" data-filter="All">All</button><button class="filter-chip" data-filter="Home">Home</button><button class="filter-chip" data-filter="Money">Money</button><button class="filter-chip" data-filter="Health">Health</button><button class="filter-chip" data-filter="Work">Work</button></div><div class="document-list alt-list" id="alternate-list"></div></section>
+      <footer class="footer"><span>Private by nature. Helpful by design.</span><span>Made for the things that make life, life.</span></footer>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-item active" data-view="overview"><span>⌂</span>Home</button>
+    <button class="mobile-nav-item" data-view="inbox"><span>▤</span>Documents</button>
+    <button class="mobile-add" id="mobile-add" aria-label="Add a document">＋</button>
+    <button class="mobile-nav-item" data-view="actions"><span>✓</span>To-dos<i class="mobile-todo-dot"></i></button>
+    <button class="mobile-nav-item" id="mobile-profile"><span>◉</span>You</button>
+  </nav>
+
+  <div class="modal-backdrop hidden" id="modal-backdrop"><section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div class="modal-label"><span class="modal-spark">✳</span><span id="modal-category">PAPERTRAIL FOUND THIS</span></div><h2 id="modal-title">Your insurance is up for renewal</h2><p class="modal-intro" id="modal-intro"></p><div class="source-box"><div class="source-head"><span class="source-icon">▤</span><div><b>Source document</b><small id="source-name">Renters Insurance Policy.pdf</small></div><span class="verified">✓ Verified</span></div><div class="source-quote" id="source-quote"></div></div><div class="modal-next"><b>Your next step</b><p id="modal-next-text"></p></div><div class="modal-actions"><button class="primary-button" id="mark-done">Mark as handled <span>✓</span></button><button class="subtle-button" id="ask-question">Ask Papertrail <span>↗</span></button></div><div class="modal-privacy">Your documents stay private and are only used to help you.</div></section></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
