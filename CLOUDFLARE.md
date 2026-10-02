@@ -3,10 +3,11 @@
 Papertrail's AI endpoint is hosted as a Cloudflare Worker:
 
 - App: <https://thankgodizime.github.io/papertrail/>
-- AI endpoint: <https://papertrail-ai.mrtiago807.workers.dev/api/chat>
+- AI chat endpoint: <https://papertrail-ai.mrtiago807.workers.dev/api/chat>
+- Automatic document review: <https://papertrail-ai.mrtiago807.workers.dev/api/analyze>
 - Worker source: `worker/index.js`
 
-The Worker is connected to Cloudflare Workers AI using the `AI` binding and the `@cf/meta/llama-3.2-3b-instruct` model. No OpenAI key or other model secret is stored in the public app or repository. The app sends the user's question and up to 14,000 characters of extracted document text to Cloudflare for an answer. The original uploaded file remains in browser storage on the user's device.
+The Worker is connected to Cloudflare Workers AI using the `AI` binding and the `@cf/meta/llama-3.2-3b-instruct` model. No OpenAI key or other model secret is stored in the public app or repository. OCR and text extraction run in the browser. After a readable file is uploaded, the app sends extracted text to Cloudflare for a summary and suggested next steps; chat sends extracted text with the user's question. The original uploaded file remains in browser storage on the user's device. Suggested tasks are stored in local browser storage.
 
 ## Updating the server
 
