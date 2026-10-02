@@ -15,7 +15,7 @@ $('#chat-privacy-note').textContent=canUseAI?'AI answers send readable document 
 // Documents stay in this browser's private IndexedDB. GitHub Pages has no private server.
 let paperDB;
 const extractedByDocument=new Map();
-let actionItems=JSON.parse(localStorage.getItem('papertrail-actions')||'[]');
+let actionItems=JSON.parse(localStorage.getItem('papertrail-actions')||'[]');let migratedActions=false;actionItems.forEach(item=>{if(!item.state&&docs.some(doc=>doc.id===item.documentId&&doc.uploaded&&doc.analysis)){item.state='suggested';migratedActions=true}});if(migratedActions)localStorage.setItem('papertrail-actions',JSON.stringify(actionItems));
 let ocrWorkerPromise;
 let currentUploadDoc=null;
 async function getOCRWorker(){if(!window.Tesseract)throw new Error('The photo reader could not load. Check your internet connection and try again.');if(!ocrWorkerPromise)ocrWorkerPromise=window.Tesseract.createWorker('eng',1,{logger:info=>{if(info.status==='recognizing text'&&currentUploadDoc){currentUploadDoc.status=`Reading photo… ${Math.round((info.progress||0)*100)}%`;store();render()}}});return ocrWorkerPromise}
